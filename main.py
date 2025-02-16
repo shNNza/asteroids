@@ -3,6 +3,7 @@ from constants import SCREEN_WIDTH, SCREEN_HEIGHT, ASTEROID_MAX_RADIUS, ASTEROID
 from asteroid import Asteroid
 from asteroidfield import AsteroidField
 from player import Player
+import sys
 
 def main():
     # Initialize pygame
@@ -52,7 +53,11 @@ def main():
         pygame.display.flip()
 
     # Quit pygame when the loop ends
-    pygame.quit()
+        for asteroid in asteroids:
+            if player.collides_with(asteroid):
+                print("Game over!")
+                pygame.quit()
+                sys.exit()
    
 if __name__ == "__main__":
     main()
