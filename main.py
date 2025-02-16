@@ -14,7 +14,8 @@ def main():
     updatable = pygame.sprite.Group()
     drawable = pygame.sprite.Group()
 
-    Player.containers = (asteroids, updatable, drawable)
+    Asteroid.containers = (asteroids, updatable, drawable)
+    Player.containers = (updatable, drawable)
 
     # Set static containers for AsteroidField class (only updatable)
     AsteroidField.containers = (updatable,)
