@@ -7,7 +7,7 @@ import pygame
 class Player(CircleShape):
     def __init__(self, position, shots):
         # Call the parent class's constructor with PLAYER_RADIUS
-        super().__init__(position, PLAYER_RADIUS)
+        super().__init__(position.x, position.y, PLAYER_RADIUS)
         self.shots = shots
         
         # Initialize the rotation field to 0
