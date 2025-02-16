@@ -3,6 +3,7 @@ from constants import SCREEN_WIDTH, SCREEN_HEIGHT, ASTEROID_MAX_RADIUS, ASTEROID
 from asteroid import Asteroid
 from asteroidfield import AsteroidField
 from player import Player
+from shot import Shot
 import sys
 
 def main():
@@ -18,7 +19,8 @@ def main():
 
     Asteroid.containers = (asteroids, updatable, drawable)
     Player.containers = (updatable, drawable)
-
+    Shot.containers = (updatable, drawable)
+    
     # Set static containers for AsteroidField class (only updatable)
     AsteroidField.containers = (updatable,)
 
@@ -30,7 +32,7 @@ def main():
     pygame.display.set_caption("Kyle's Asteroids Game")
 
     # Player Instance intialization
-    player = Player(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2)
+    player = Player(pygame.Vector2(SCREEN_WIDTH / 2, SCREEN_HEIGHT / 2), shots)
 
     # Game loop
     running = True
@@ -42,6 +44,9 @@ def main():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 running = False
+
+        pressed_keys = pygame.key.get_pressed() # Handle Input
+        player.handle_input(pressed_keys)        
 
         updatable.update(dt)  # Update Player Movement
 

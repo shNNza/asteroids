@@ -5,9 +5,9 @@ from constants import PLAYER_SHOOT_SPEED, PLAYER_TURN_SPEED, PLAYER_SPEED, PLAYE
 import pygame
 
 class Player(CircleShape):
-    def __init__(self, x, y, shots):
+    def __init__(self, position, shots):
         # Call the parent class's constructor with PLAYER_RADIUS
-        super().__init__(x, y, PLAYER_RADIUS)
+        super().__init__(position, PLAYER_RADIUS)
         self.shots = shots
         
         # Initialize the rotation field to 0
@@ -46,3 +46,7 @@ class Player(CircleShape):
         shot_velocity = self.direction * PLAYER_SHOOT_SPEED # Create a new shot at the player's position
         new_shot = Shot(self.position, shot_velocity)
         self.shots.add(new_shot)
+
+    def handle_input(self, pressed_keys):
+        if pressed_keys[pygame.K_SPACE]:
+            self.shoot()  
