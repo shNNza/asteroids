@@ -1,6 +1,6 @@
 import pygame
 from constants import *
-from player import Player 
+from player import Player
 
 def main():
     # Initialize pygame
