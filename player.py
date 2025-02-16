@@ -12,6 +12,7 @@ class Player(CircleShape):
         
         # Initialize the rotation field to 0
         self.rotation = 0
+        self.direction = pygame.Vector2(0, -1)  # Default direction: "upwards"
 
     def triangle(self):
         forward = pygame.Vector2(0, 1).rotate(self.rotation)
@@ -26,6 +27,7 @@ class Player(CircleShape):
 
     def rotate(self, dt):
         self.rotation += PLAYER_TURN_SPEED * dt
+        self.direction = pygame.Vector2(0, -1).rotate(self.rotation)
 
     def update(self, dt):
         keys = pygame.key.get_pressed()
@@ -48,5 +50,6 @@ class Player(CircleShape):
         self.shots.add(new_shot)
 
     def handle_input(self, pressed_keys):
+        self.direction = pygame.Vector2(0, -1).rotate(self.rotation)
         if pressed_keys[pygame.K_SPACE]:
             self.shoot()  
