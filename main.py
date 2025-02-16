@@ -1,6 +1,6 @@
 import pygame
 from constants import SCREEN_WIDTH, SCREEN_HEIGHT, ASTEROID_MAX_RADIUS, ASTEROID_SPAWN_RATE, ASTEROID_MIN_RADIUS, ASTEROID_KINDS
-from asteroid import Asteroid
+from asteroids import Asteroid
 from asteroidfield import AsteroidField
 from player import Player
 from shot import Shot
