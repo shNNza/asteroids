@@ -1,4 +1,5 @@
 import pygame
+from constants import SHOT_RADIUS, PLAYER_SHOOT_SPEED
 
 # Base class for game objects
 class CircleShape(pygame.sprite.Sprite):
@@ -24,3 +25,11 @@ class CircleShape(pygame.sprite.Sprite):
     def collides_with(self, other):
         distance = self.position.distance_to(other.position)
         return distance <= (self.radius + other.radius)
+
+class Shot(CircleShape):
+    def __init__(self, position, velocity):
+        super().__init__(position, SHOT_RADIUS)
+        self.velocity = velocity
+
+    def update(self, dt):
+      self.position += self.velocity * dt    
