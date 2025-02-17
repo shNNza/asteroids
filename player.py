@@ -50,6 +50,5 @@ class Player(CircleShape):
         self.shots.add(new_shot)
 
     def handle_input(self, pressed_keys):
-        self.direction = pygame.Vector2(0, -1).rotate(self.rotation)
         if pressed_keys[pygame.K_SPACE]:
             self.shoot()  
