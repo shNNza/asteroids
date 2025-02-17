@@ -8,6 +8,9 @@ class Shot(CircleShape):
         super().__init__(position.x, position.y, SHOT_RADIUS)
         self.velocity = velocity
 
+    def draw(self, screen):
+        pygame.draw.circle(screen, "white", (self.position.x, self.position.y), SHOT_RADIUS)    
+
     def update(self, dt):
         self.position += self.velocity * dt
         if (self.position.x < 0 or 
@@ -15,3 +18,5 @@ class Shot(CircleShape):
             self.position.y < 0 or 
             self.position.y > SCREEN_HEIGHT):
             self.kill()
+
+            
