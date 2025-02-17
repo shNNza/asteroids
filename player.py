@@ -6,13 +6,13 @@ import pygame
 
 class Player(CircleShape):
     def __init__(self, position, shots):
-        # Call the parent class's constructor with PLAYER_RADIUS
+         # Initialize the sprite
+        pygame.sprite.Sprite.__init__(self)
+        # Call the parent class's constructor
         super().__init__(position.x, position.y, PLAYER_RADIUS)
         self.shots = shots
-        
-        # Initialize the rotation field to 0
         self.rotation = 0
-        self.direction = pygame.Vector2(0, -1)  # Default direction: "upwards"
+        self.direction = pygame.Vector2(0, -1)
 
     def triangle(self):
         forward = pygame.Vector2(0, 1).rotate(self.rotation)
